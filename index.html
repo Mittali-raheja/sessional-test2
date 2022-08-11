@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+     <!--Title-->
+    <title>PERSON MANAGMENT</title>
+     <!-- CSS File-->
+     <meta charset="UTF-8">
+     
+    
+</head>
+<body style="background-color:rgb(145, 153, 156)">
+    
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">FORM LINK</a></li>
+                <li><button id = "emptable" type="button" onclick="loadXMLDoc()">Display Empoloyee List</button></li>
+                <li><a href="#footer">Contact us</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <!--style navbar-->
+    <style>
+.navbar{
+    background-color:black;
+    border-radius: 30px;
+  }
+  .navbar li{
+    float:left;
+    list-style: none; 
+    margin: 13px 20px;
+}
+.navbar ul{
+    overflow: auto;
+}
+.navbar li a{
+    padding: 3px 3px;
+    text-decoration: none;
+    color: white;
+}
+.navbar input{
+    border: 2px solid rgb(56, 54, 54);
+    border-radius: 14px;
+    padding: 2px 17px;
+    width: 129px;
+}
+#emptable{
+    
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    font-size: 16px;
+    align-self: auto;
+    padding: 3px;
+    
+}
+    </style>
+   
+
+   
+    
+</section>
+<style>
+    body{
+    width: 100%;
+    max-width: 1400px;
+    display: block;
+    margin: auto;
+    min-height: 100vh;
+    background: #191919;
+    font-family: sans-serif;
+}
+
+</style>
+<div id="card_table" class="table_content" ></div>
+<script>
+    function loadXMLDoc() {
+	var xhttp = new XMLHttpRequest();
+	var data;
+	xhttp.onreadystatechange = function() {
+	  if (this.readyState == 4 && this.status == 200) {
+		data = JSON.parse(this.responseText);
+		console.log(data);
+		console.log(data[0].address);
+		var html = '<table>';
+		  html += '<tr>';
+		  for( var j in data[0] ) {
+		  	html += '<th>' + j + '</th>';
+		  }
+		  html += '</tr>';
+		  for( var i = 0; i < data.length; i++) {
+			  html += '<tr>';
+			  for( var j in data[i] ) {
+				  console.log((j));
+				  if(j==="address"){html += '<td>' + data[i][j].city + '</td>';}
+				  else if(j==="company"){html += '<td>' + data[i][j].name + '</td>';}
+				  else{
+					  html += '<td>' + data[i][j] + 						'</td>';
+					  }
+			  }
+			  html += '</tr>';
+		  }
+		  html += '</table>';
+		  document.getElementById("card_table").innerHTML = html;
+	   }
+	  
+	};
+	const api = "https://jsonplaceholder.typicode.com/users?utm_source=Mailerlite&utm_medium=E-mail&utm_campaign=Test%20Series&utm_term=2022-08-09";
+	xhttp.open("GET", api, true);
+	xhttp.send();
+  }
+</script>
+<style>
+    #card_table{
+        border: 5px outset black;
+  background-color: rgb(153, 195, 214);    
+  text-align: center;
+    }
+    </style>
+<footer id="footer">
+    <div class="footer-content">
+        <!--add all information -->
+        <h3>PERSON MANAGMENT</h3>
+        <p>Person managment is website which store the data of person their qualificaltion ,age and some personal data </p>
+        <p1>this site created by MITTALI RAHEJA  below are the links to contact her</p1>
+    </div>
+
+    <ul class="socials">
+       
+        <li><a href="https://twitter.com/RahejaMittali"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="www.google.com"><i class="fa fa-google-plus"></i></a></li>
+        
+        <li><a href="https://www.linkedin.com/in/mittali-raheja-2515a1211/"><i class="fa fa-linkedin-square"></i></a></li>
+     </ul>
+  </footer>
+  <style>
+    footer {
+    position:fixed;
+    
+    left: 0;
+    right: 0;
+    background: #111;
+    
+    width: 100vw;
+    padding-top: 40px;
+    color: #fff;
+
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+.footer-content h3{
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    
+}
+.footer-content p{
+    max-width: 500px;
+    margin: 10px auto;
+    line-height: 28px;
+    font-size: 14px;
+    color: #cacdd2;
+}
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+
+.socials li{
+    margin: 0 10px;
+}
+
+.socials a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+    transition: color .4s ease;
+}
+
+.socials a:hover i{
+    color: aqua;
+}
+@media (max-width:500px) {
+.footer-menu ul{
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+}
+  </style>
+   
+
+
+    </body>
